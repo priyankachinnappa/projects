@@ -1,0 +1,31 @@
+<div class="form-container">
+    <h2>Add Investment</h2>
+    <form [formGroup]="investmentForm" (ngSubmit)="submitForm()">
+      <label for="asset">Asset:</label>
+      <input id="asset" formControlName="asset" type="text" required>
+      <div *ngIf="investmentForm.controls['asset'].invalid && investmentForm.controls['asset'].touched">
+        Asset name is required.
+      </div>
+  
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" formControlName="quantity" type="number" required>
+      <div *ngIf="investmentForm.controls['quantity'].invalid && investmentForm.controls['quantity'].touched">
+        Quantity must be at least 1.
+      </div>
+  
+      <label for="price">Price:</label>
+      <input id="price" formControlName="price" type="number" required>
+      <div *ngIf="investmentForm.controls['price'].invalid && investmentForm.controls['price'].touched">
+        Price must be at least 1.
+      </div>
+  
+      <label for="date">Date:</label>
+      <input id="date" formControlName="date" type="date" [min]="today" required>
+      <div *ngIf="investmentForm.controls['date'].invalid && investmentForm.controls['date'].touched">
+        Date is required.
+      </div>
+  
+      <button type="submit" [disabled]="investmentForm.invalid">Add Investment</button>
+    </form>
+  </div>
+  
